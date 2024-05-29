@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:monitoring_maggot/home_page.dart';
 import 'package:monitoring_maggot/pages/history_page.dart';
+import 'package:monitoring_maggot/pages/home_page.dart';
 import 'package:monitoring_maggot/theme.dart';
 
 class Dashboard extends StatefulWidget {
@@ -22,11 +22,11 @@ class _DashboardState extends State<Dashboard> {
           height: 60,
         ),
       ),
-      MyHomePage(),
+      const MyHomePage(),
     ],
     [
       Image.asset("assets/icon_history_db.png"),
-      HistoryPage(),
+      const HistoryPage(),
     ],
   ];
 
@@ -60,7 +60,7 @@ class _DashboardState extends State<Dashboard> {
                     height: double.infinity,
                     child: item[0],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                     width: double.infinity,
                     child: DecoratedBox(
@@ -80,7 +80,7 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _showModal();
     });
     super.initState();
@@ -91,7 +91,7 @@ class _DashboardState extends State<Dashboard> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Goal"),
+          title: const Text("Goal"),
           content: Text(
             "Tujuannya untuk membantu peternak maggot BSF dalam memonitoring kondisi suhu dan kelembaban kandang Maggot BSF dari jarak jauh. Kondisi suhu dan kelembaban kandang merupakan faktor penting dalam keberhasilan Maggot BSF.",
             style: primaryTextStyle.copyWith(),
@@ -99,7 +99,7 @@ class _DashboardState extends State<Dashboard> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
               },

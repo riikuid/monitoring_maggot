@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:monitoring_maggot/firebase_options.dart';
-import 'package:monitoring_maggot/home_page.dart';
 import 'package:monitoring_maggot/pages/dashboard.dart';
 import 'package:monitoring_maggot/pages/splash_page.dart';
 
@@ -37,12 +36,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: FutureBuilder(
-        future: Future.delayed(Duration(seconds: 3)),
+        future: Future.delayed(const Duration(seconds: 3)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return SplashPage();
+            return const SplashPage();
           } else {
-            return Dashboard();
+            return const Dashboard();
           }
         },
       ),

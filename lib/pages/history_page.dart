@@ -1,7 +1,8 @@
-import 'dart:math';
+
+import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:monitoring_maggot/model/data_maggot.dart';
 import 'package:monitoring_maggot/theme.dart';
@@ -16,9 +17,24 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
+  final starCountRef =
+  FirebaseDatabase.instance.ref('DataHistory');
+
+
+  @override
+  void initState() {
+    super.initState();
+    starCountRef.onValue.listen((DatabaseEvent event) {
+      final data = event.snapshot.value;
+      final json = data as Map<Object?, Object?>;
+      final jsonString = jsonEncode(json);
+
+      debugPrint('qqq $jsonString');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    MediaQueryData device = MediaQuery.of(context);
     return Scaffold(
       backgroundColor: primaryColor500,
       appBar: AppBar(
@@ -59,13 +75,13 @@ class _HistoryPageState extends State<HistoryPage> {
             Container(
               height: 50,
               width: 50,
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: secondaryColor,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(100.0),
                 ),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage(
                     "assets/icon_history.png",
                   ),
@@ -88,7 +104,7 @@ class _HistoryPageState extends State<HistoryPage> {
         backgroundColor: primaryColor500,
       ),
       body: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           // top: device.padding.top,
           right: 20,
           left: 20,
@@ -101,7 +117,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
@@ -131,7 +147,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     height: 10,
                   ),
                   ChartWidget(dataList: dataList),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ColoredBox(

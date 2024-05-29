@@ -1,6 +1,4 @@
-import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:monitoring_maggot/model/data_maggot.dart';
@@ -8,6 +6,8 @@ import 'package:monitoring_maggot/theme.dart';
 import 'package:monitoring_maggot/widget/chart_widget.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: primaryColor500,
       ),
       body: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           // top: device.padding.top,
           right: 20,
           left: 20,
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 20,
                           ),
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 20,
                           ),
@@ -214,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 20,
                           ),
@@ -262,7 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 20,
                           ),
